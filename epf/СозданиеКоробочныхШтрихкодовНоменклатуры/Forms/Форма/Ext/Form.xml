@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
+	<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание коробочных штрихкодов номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+	<AutoTitle>true</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаполнить" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Заполнить</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьExtendedTooltip" id="2"/>
+			</Button>
+			<Button name="ФормаСоздатьШтрихкоды" id="3">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СоздатьШтрихкоды</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьШтрихкодыExtendedTooltip" id="4"/>
+			</Button>
+			<Button name="ФормаВыбратьВсеКСозданию" id="5">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ВыбратьВсеКСозданию</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьВсеКСозданиюExtendedTooltip" id="6"/>
+			</Button>
+			<Button name="ФормаСнятьВсе" id="7">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СнятьВсе</CommandName>
+				<ExtendedTooltip name="ФормаСнятьВсеExtendedTooltip" id="8"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПараметры" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПараметрыExtendedTooltip" id="11"/>
+			<ChildItems>
+				<CheckBoxField name="ТолькоОтсутствующие" id="12">
+					<DataPath>ТолькоОтсутствующие</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТолькоОтсутствующиеКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ТолькоОтсутствующиеExtendedTooltip" id="14"/>
+				</CheckBoxField>
+				<LabelField name="НадписьИтоги" id="15">
+					<DataPath>НадписьИтоги</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="НадписьИтогиКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="НадписьИтогиExtendedTooltip" id="17"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ШтрихкодыКСозданию" id="20">
+			<Representation>List</Representation>
+			<DataPath>ШтрихкодыКСозданию</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<ContextMenu name="ШтрихкодыКСозданиюКонтекстноеМеню" id="21"/>
+			<ExtendedTooltip name="ШтрихкодыКСозданиюExtendedTooltip" id="22"/>
+			<AutoInsertNewRow>false</AutoInsertNewRow>
+			<EnableStartDrag>false</EnableStartDrag>
+			<FileDragMode>AsFileRef</FileDragMode>
+			<ChildItems>
+				<CheckBoxField name="ШтрихкодыКСозданиюВыбран" id="23">
+					<DataPath>ШтрихкодыКСозданию.Выбран</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ШтрихкодыКСозданиюВыбранКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюВыбранExtendedTooltip" id="25"/>
+					<Events>
+						<Event name="OnChange">ШтрихкодыКСозданиюВыбранПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ШтрихкодыКСозданиюБаночныйШтрихкод" id="26">
+					<DataPath>ШтрихкодыКСозданию.БаночныйШтрихкод</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюБаночныйШтрихкодКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюБаночныйШтрихкодExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюКоробочныйШтрихкод" id="29">
+					<DataPath>ШтрихкодыКСозданию.КоробочныйШтрихкод</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюКоробочныйШтрихкодКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюКоробочныйШтрихкодExtendedTooltip" id="31"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюНоменклатура" id="32">
+					<DataPath>ШтрихкодыКСозданию.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюНоменклатураКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюНоменклатураExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюХарактеристика" id="35">
+					<DataPath>ШтрихкодыКСозданию.Характеристика</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюХарактеристикаКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюХарактеристикаExtendedTooltip" id="37"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюПартия" id="38">
+					<DataPath>ШтрихкодыКСозданию.Партия</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюПартияКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюПартияExtendedTooltip" id="40"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюЕдиницаИзмерения" id="41">
+					<DataPath>ШтрихкодыКСозданию.ЕдиницаИзмерения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюЕдиницаИзмеренияКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюЕдиницаИзмеренияExtendedTooltip" id="43"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюСтатус" id="44">
+					<DataPath>ШтрихкодыКСозданию.Статус</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюСтатусКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюСтатусExtendedTooltip" id="46"/>
+				</InputField>
+				<InputField name="ШтрихкодыКСозданиюКомментарий" id="47">
+					<DataPath>ШтрихкодыКСозданию.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ШтрихкодыКСозданиюКомментарийКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ШтрихкодыКСозданиюКомментарийExtendedTooltip" id="49"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.СозданиеКоробочныхШтрихкодовНоменклатуры</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ТолькоОтсутствующие" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только отсутствующие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НадписьИтоги" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итоги</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ШтрихкодыКСозданию" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Штрихкоды к созданию</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Выбран" id="1">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбран</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="БаночныйШтрихкод" id="2">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Баночный ШК</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>200</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КоробочныйШтрихкод" id="3">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Коробочный ШК</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>200</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номенклатура" id="4">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Характеристика" id="5">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Партия" id="6">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Партия</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ПартииНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕдиницаИзмерения" id="7">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторЕдиницИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="8">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="9">
+					<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>500</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать баночные ШК и проверить дубли коробочных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьШтрихкоды" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать штрихкоды</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать отмеченные коробочные ШК в регистр (с проверкой дублей)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьШтрихкоды</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьВсеКСозданию" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все к созданию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить строки со статусом КСозданию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьВсеКСозданию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьВсе" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отметки со всех строк</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СнятьВсе</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>
