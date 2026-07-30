@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Описание управляемой формы внешней обработки.
+  Используется как спецификация при сборке .epf в Конфигураторе / EDT.
+-->
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core"
+	xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config"
+	xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core"
+	xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema"
+	xmlns:ent="http://v8.1c.ru/8.1/data/enterprise"
+	xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform"
+	xmlns:style="http://v8.1c.ru/8.1/data/ui/style"
+	xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system"
+	xmlns:v8="http://v8.1c.ru/8.1/data/core"
+	xmlns:v8ui="http://v8.1c.ru/8.1/data/ui"
+	xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web"
+	xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"
+	xmlns:xr="http://v8.1c.ru/8.3/xcf/readable"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.17">
+
+	<!--
+	Реквизиты формы (создать вручную, если XML не загружается):
+	- Объект (ДанныеФормыСтруктура) — основной реквизит обработки
+	- ТолькоОтсутствующие (Булево)
+	- НадписьИтоги (Строка)
+	- ШтрихкодыКСозданию (ТаблицаЗначений):
+	    Выбран (Булево)
+	    БаночныйШтрихкод (Строка 200)
+	    КоробочныйШтрихкод (Строка 200)
+	    Номенклатура (СправочникСсылка.Номенклатура)
+	    Характеристика (СправочникСсылка.ХарактеристикиНоменклатуры)
+	    Партия (СправочникСсылка.ПартииНоменклатуры)
+	    ЕдиницаИзмерения (СправочникСсылка.КлассификаторЕдиницИзмерения / ЕдиницыИзмерения — по версии УНФ)
+	    Статус (Строка 50)
+	    Комментарий (Строка 500)
+
+	Команды:
+	- Заполнить
+	- СоздатьШтрихкоды
+	- ВыбратьВсеКСозданию
+	- СнятьВсе
+
+	Элементы:
+	- ТолькоОтсутствующие (Флажок)
+	- НадписьИтоги (Надпись)
+	- ШтрихкодыКСозданию (Таблица)
+	- Кнопки командной панели
+	-->
+
+	<title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Создание коробочных штрихкодов номенклатуры</v8:content>
+		</v8:item>
+	</title>
+	<autoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<events>
+		<event name="OnCreateAtServer">ПриСозданииНаСервере</event>
+		<event name="OnOpen">ПриОткрытии</event>
+	</events>
+
+</Form>
